@@ -1,0 +1,100 @@
+body{
+    font-family:monospace;
+    background-color: rgb(53, 65, 118);
+    display: flex;
+    justify-content: center;
+    align-items: center;                              
+}
+
+
+.container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 50px;
+    padding: 5px;
+    background-color: rgb(41, 39, 39);
+    max-width: 470px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.display{
+    display:flex;
+    justify-content:end;
+    align-items:flex-end;
+    background-color: rgb(195, 192, 192);
+    border:3px solid;
+    border-radius: 7px;
+    width: 465.5px;
+    height:100px;
+}
+
+.text{
+    padding-right:17px;
+    font-size: 5.5em;
+}
+
+.operator{
+    background-color: orange;
+}
+.operator:hover{
+    background-color: rgb(216, 141, 0);
+}
+
+.helper{
+    background-color: grey;
+}
+
+.helper:hover{
+    background-color: rgb(97, 96, 96);
+}
+
+.number:hover{
+    background-color: rgb(206, 204, 204);
+}
+.button-0,
+.buttons-1st,
+.buttons-2nd,
+.buttons-3rd,
+.buttons-4st{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex:1;
+    width: 465.5px;
+}
+
+.zero{
+    display:flex;
+    align-items:center;
+    box-sizing: border-box;
+    width:212%;
+}
+
+.zero{
+    display:flex;
+    align-items:center;
+    box-sizing: border-box;
+    width:212%;
+}
+
+.zero:hover{
+    background-color: rgb(206, 204, 204);
+}
+.text-zero{
+    padding-left: 43.5px;
+}
+
+
+button{
+    width:100%;
+    height:80px;
+    font-family:monospace;
+    font-size: 27px;
+    border-radius: 10px;
+    margin: 1px;
+}
+
+
