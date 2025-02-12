@@ -75,14 +75,6 @@ function calculate(){
                 commaPressed  = false;
             }else if (button.textContent =="+/-"){
                 numberDisplay.textContent *= -1;
-            }else if (button.textContent =="+" && numberDisplay.textContent == 0){
-                numberDisplay.textContent = numberDisplay.textContent;
-            }else if (button.textContent =="-" && numberDisplay.textContent == 0){
-                numberDisplay.textContent = numberDisplay.textContent;
-            }else if (button.textContent =="*" && numberDisplay.textContent == 0){
-                numberDisplay.textContent = numberDisplay.textContent;
-            }else if (button.textContent =="/" && numberDisplay.textContent == 0){
-                numberDisplay.textContent = numberDisplay.textContent;
             }else if (button.textContent =="%"){
                 numberDisplay.textContent *= 0.01;
                 operatorButtonLastPresed = true;
@@ -95,8 +87,13 @@ function calculate(){
             }else if (button.textContent =="="  && !operatorButtonLastPresed){
                 num2 = numberDisplay.textContent;
                 let result = operator(Number(num1), op, Number(num2));
-                if (result.toString().length >= displayLength && result.toString().includes(".")){
-                    numberDisplay.textContent = result.toFixed(displayLength - result.toFixed(0)-1);
+                if (result.toString().length >= displayLength){
+                    if(result %1 != 0){
+                        numberDisplay.textContent = result.toFixed(displayLength - result.toFixed(0)-1);
+                    }else{
+                        let result2 =  result.toExponential(displayLength-1).replace(/\.?0+e/, "e");
+                        numberDisplay.textContent = result2.length> displayLength ? result2.slice(0, displayLength): result2;
+                    }
                 }else{
                     numberDisplay.textContent =result;
                 }
@@ -104,8 +101,13 @@ function calculate(){
                 operatorButtonLastPresed = true;
             }else if (button.textContent =="=" && operatorButtonLastPresed){
                 let result = operator(Number(num1), op, Number(num2));
-                if (result.toString().length >= displayLength && result.toString().includes(".")){
-                    numberDisplay.textContent = result.toFixed(displayLength - result.toFixed(0)-1);
+                if (result.toString().length >= displayLength){
+                    if(result %1 != 0){
+                        numberDisplay.textContent = result.toFixed(displayLength - result.toFixed(0)-1);
+                    }else{
+                        let result2 =  result.toExponential(displayLength-1).replace(/\.?0+e/, "e");
+                        numberDisplay.textContent = result2.length> displayLength ? result2.slice(0, displayLength): result2;
+                    }
                 }else{
                     numberDisplay.textContent =result;
                 }
@@ -124,12 +126,16 @@ function calculate(){
             }else if (operatorButtonLastPresed && zero){
                 numberDisplay.textContent =  zero.innerHTML;
                 operatorButtonLastPresed = false;
-            }else if (button.textContent =="+" && num1 != 0 && numberDisplay.textContent != 0){
+            }else if (button.textContent =="+" && numberDisplay.textContent != 0){
                 num2 = numberDisplay.textContent;
-                op = "+";
                 let result = operator(Number(num1), op, Number(num2));
-                if (result.toString().length >= displayLength && result.toString().includes(".")){
-                    numberDisplay.textContent = result.toFixed(displayLength - result.toFixed(0)-1);
+                if (result.toString().length >= displayLength){
+                    if(result %1 != 0){
+                        numberDisplay.textContent = result.toFixed(displayLength - result.toFixed(0)-1);
+                    }else{
+                        let result2 =  result.toExponential(displayLength-1).replace(/\.?0+e/, "e");
+                        numberDisplay.textContent = result2.length> displayLength ? result2.slice(0, displayLength): result2;
+                    }
                 }else{
                     numberDisplay.textContent =result;
                 }
@@ -140,12 +146,17 @@ function calculate(){
                 num1 = numberDisplay.textContent;
                 op = "-"
                 operatorButtonLastPresed = true;
-            }else if (button.textContent =="-" && num1 != 0 && numberDisplay.textContent != 0){
+            }else if (button.textContent =="-" && numberDisplay.textContent != 0){
                 num2 = numberDisplay.textContent;
                 op = "-"
                 let result = operator(Number(num1), op, Number(num2));
-                if (result.toString().length >= displayLength && result.toString().includes(".")){
-                    numberDisplay.textContent = result.toFixed(displayLength - result.toFixed(0)-1);
+                if (result.toString().length >= displayLength){
+                    if(result %1 != 0){
+                        numberDisplay.textContent = result.toFixed(displayLength - result.toFixed(0)-1);
+                    }else{
+                        let result2 =  result.toExponential(displayLength-1).replace(/\.?0+e/, "e");
+                        numberDisplay.textContent = result2.length> displayLength ? result2.slice(0, displayLength): result2;
+                    }
                 }else{
                     numberDisplay.textContent =result;
                 }
@@ -156,12 +167,17 @@ function calculate(){
                 num1 = numberDisplay.textContent;
                 op = "*"
                 operatorButtonLastPresed = true;
-            }else if (button.textContent =="*" && num1 != 0 && numberDisplay.textContent != 0){
+            }else if (button.textContent =="*" && numberDisplay.textContent != 0){
                 num2 = numberDisplay.textContent;
                 op = "*"
                 let result = operator(Number(num1), op, Number(num2));
-                if (result.toString().length >= displayLength && result.toString().includes(".")){
-                    numberDisplay.textContent = result.toFixed(displayLength - result.toFixed(0)-1);
+                if (result.toString().length >= displayLength){
+                    if(result %1 != 0){
+                        numberDisplay.textContent = result.toFixed(displayLength - result.toFixed(0)-1);
+                    }else{
+                        let result2 =  result.toExponential(displayLength-1).replace(/\.?0+e/, "e");
+                        numberDisplay.textContent = result2.length> displayLength ? result2.slice(0, displayLength): result2;
+                    }
                 }else{
                     numberDisplay.textContent =result;
                 }
@@ -172,12 +188,17 @@ function calculate(){
                 num1 = numberDisplay.textContent;
                 op = "/"
                 operatorButtonLastPresed = true;
-            }else if (button.textContent =="/" && num1 != 0 && numberDisplay.textContent != 0){
+            }else if (button.textContent =="/" && numberDisplay.textContent != 0){
                 num2 = numberDisplay.textContent;
                 op = "/"
                 let result = operator(Number(num1), op, Number(num2));
-                if (result.toString().length >= displayLength && result.toString().includes(".")){
-                    numberDisplay.textContent = result.toFixed(displayLength - result.toFixed(0)-1);
+                if (result.toString().length >= displayLength){
+                    if(result %1 != 0){
+                        numberDisplay.textContent = result.toFixed(displayLength - result.toFixed(0)-1);
+                    }else{
+                        let result2 =  result.toExponential(displayLength-1).replace(/\.?0+e/, "e");
+                        numberDisplay.textContent = result2.length> displayLength ? result2.slice(0, displayLength): result2;
+                    }
                 }else{
                     numberDisplay.textContent =result;
                 }
